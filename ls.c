@@ -11,7 +11,6 @@
 #include <grp.h>
 
 int main(int argc, char **argv) {
-    
     FILE *file;
     DIR *dir;
     struct dirent *dirent;
@@ -22,16 +21,16 @@ int main(int argc, char **argv) {
     if(argc < 2) {
         dir = opendir(".");
         if(dir == NULL) {
-            printf("error here : current");
             perror("Error ");
         }
     }
     if (argc >= 2) {
         dir = opendir(argv[1]);
+        
         if(dir == NULL) {
-            printf("error here %s\n", argv[1] );
             perror("Error ");
         }
+
     }
     printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     while((dirent = readdir(dir)) != NULL) {
@@ -41,7 +40,8 @@ int main(int argc, char **argv) {
             continue;
         }
 
-        if((file = fopen(dirent->d_name, "r"))) {
+        if((file = fopen(dirent->d_name, "r")) || dirent != NULL) {
+            
             lstat(dirent->d_name, &filestat);
             pwd =  getpwuid((&filestat)->st_uid);
             grp = getgrgid((&filestat)->st_gid);
@@ -55,6 +55,7 @@ int main(int argc, char **argv) {
             printf("Last Accessed Time      : %-10s", ctime(&filestat.st_atime));
             printf("Permission              : %o\n", filestat.st_mode & (S_IRWXU |\
             S_IRWXG | S_IRWXO));
+            
             printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
         } else {
             perror("Error ");
