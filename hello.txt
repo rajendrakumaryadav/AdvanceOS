@@ -1,2 +1,3 @@
 This is a simple File.
 Hi, I am updating it at 14:26:25
+Hi, It is News
