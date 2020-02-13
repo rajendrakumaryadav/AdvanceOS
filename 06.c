@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
 
     for(int i = 1; i < argc; i++) {
         lstat(argv[i], &file_stat);
-        printf("File Name : %20s, File Size : %20lluBytes", argv[i], 
+        printf("File Name : %10s, File Size : %7lluBytes\n", argv[i], 
         (long long) (&file_stat)->st_size);
     }
     printf("\n");
