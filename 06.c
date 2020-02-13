@@ -11,7 +11,6 @@ int main(int argc, char **argv) {
         printf("File Name : %20s, File Size : %20lluBytes", argv[i], 
         (long long) (&file_stat)->st_size);
     }
-    // fclose(file);
     printf("\n");
     return EXIT_SUCCESS;
 }
