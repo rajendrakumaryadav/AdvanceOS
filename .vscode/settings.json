@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "fcntl.h": "c",
+        "limits.h": "c",
+        "climits": "c"
+    }
+}
