@@ -3,6 +3,9 @@
         "fcntl.h": "c",
         "limits.h": "c",
         "climits": "c",
-        "dirent.h": "c"
+        "dirent.h": "c",
+        "statfs.h": "c",
+        "types.h": "c",
+        "stat.h": "c"
     }
 }

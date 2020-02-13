@@ -1,8 +1,9 @@
 CC=gcc
-NAME=10
+NAME=06
 FILES=${NAME}.c
+FLAGS=--std=c17 -Wall -g
 OUTPUT=${NAME}
 main:
-	${CC} ${FILES}  -o ${OUTPUT}
+	${CC} ${FILES} ${FLAGS}  -o ${OUTPUT}
 run: ${OUTPUT} ${FILES}
 	./${OUTPUT}
