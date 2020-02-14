@@ -1,9 +1,12 @@
 CC=gcc
-NAME=13
+NAME=12
 FILES=${NAME}.c
 FLAGS=--std=c11 -Wall -g
-OUTPUT=${NAME}
-main:
-	${CC} ${FILES} ${FLAGS}  -o ${OUTPUT}
-run: ${OUTPUT} ${FILES}
-	./${OUTPUT}
+OUTPUT=./bin/${NAME}
+
+main: ${FILES}
+	${CC} ${FILES} ${FLAGS} -o ${OUTPUT}
+	-clear
+
+run: ${OUTPUT} ${FILES} main
+	${OUTPUT}
