@@ -1,7 +1,7 @@
 CC=gcc
-NAME=11
+NAME=13
 FILES=${NAME}.c
-FLAGS=--std=c17 -Wall -g
+FLAGS=--std=c11 -Wall -g
 OUTPUT=${NAME}
 main:
 	${CC} ${FILES} ${FLAGS}  -o ${OUTPUT}

@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-int _start() {
+int _start()
+{
     hello();
-    exit(0);    
+    exit(0);
 }
 
-void hello() {
+void hello()
+{
     printf("Hello, World!\n");
 }
