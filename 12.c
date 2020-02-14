@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     struct dirent *direntry = NULL;
     struct stat filestat;
     int month = 1;
-    
+
     printf("Enter the Month Number [1-12] : ");
     scanf("%d", &month);
     month = month - 1;
