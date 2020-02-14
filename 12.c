@@ -26,8 +26,14 @@ int main(int argc, char **argv)
     struct tm time;
     struct dirent *direntry = NULL;
     struct stat filestat;
-    int month = 10;
-    dir = opendir("/home/rajendrayadav/Videos");
+    int month = 1;
+    
+    printf("Enter the Month Number [1-12] : ");
+    scanf("%d", &month);
+    month = month - 1;
+
+    // READ THE CURRENT DIR ["."] IS CURRENT!
+    dir = opendir(".");
     if (dir != NULL)
     {
 
@@ -45,12 +51,18 @@ int main(int argc, char **argv)
             // use filestat.st_ctime for created time.
             created_time = (time_t)filestat.st_mtime;
             time = *localtime(&created_time);
-            printf("%-7s\t : %-50s\n", months[(&time)->tm_mon], direntry->d_name);
+
+            if (month == (&time)->tm_mon)
+            {
+                printf("%-7s\t : %-50s\n", months[(&time)->tm_mon],
+                       direntry->d_name);
+            }
         }
     }
     else
     {
         perror("Error ");
+        exit(EXIT_FAILURE);
     }
     exit(EXIT_SUCCESS);
 }
