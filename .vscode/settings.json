@@ -7,6 +7,7 @@
         "statfs.h": "c",
         "types.h": "c",
         "stat.h": "c",
-        "syscall.h": "c"
+        "syscall.h": "c",
+        "functions.h": "c"
     }
 }
