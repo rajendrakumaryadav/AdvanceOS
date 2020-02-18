@@ -1,4 +1,4 @@
 .vscode
 .git
-bin
+**/bin/**
 output.txt
