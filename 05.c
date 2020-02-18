@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+/**
+ * Step 1 − Create pipe1 for the parent process to write and the child process
+ * to read.
+ * Step 2 − Create pipe2 for the child process to write and the parent process
+ * to read.
+ * Step 3 − Close the unwanted ends of the pipe from the parent and child side.
+ * Step 4 − Parent process to write a message and child process to read and
+ * display on the screen. Step 5 − Child process to write a message and parent
+ * process to read and display on the screen.
+ * */
 
 int main() {
   int pipefds1[2], pipefds2[2];
