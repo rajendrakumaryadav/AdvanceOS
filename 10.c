@@ -23,6 +23,6 @@ int main(int argc, char **argv)
             COUNT++;
         }
     }
-    printf("Total Files : %d\n", COUNT);
+    printf("Total File(s) : %d\n", COUNT);
     return EXIT_SUCCESS;
 }
