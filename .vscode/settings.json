@@ -12,6 +12,7 @@
         "*.tcc": "c",
         "string": "c",
         "istream": "c",
-        "streambuf": "c"
+        "streambuf": "c",
+        "stdc++.h": "c"
     }
 }

@@ -1,5 +1,5 @@
 CC=gcc
-NAME=16
+NAME=07
 FILES=${NAME}.c
 FLAGS=--std=c11 -Wall -g
 OUTPUT=./bin/${NAME}

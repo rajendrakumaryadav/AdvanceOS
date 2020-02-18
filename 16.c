@@ -22,7 +22,7 @@ void startDisplay()
     printf("*TO RUN A COMMAND SIMPLY TYPE YOUR COMMAND AND PRESS 'ENTER' *\n");
     printf("*EXAMPLE: ls -a, <any linux cmd>                             *\n");
     printf("*Additional: count c/w/l <filename>                          *\n");
-    printf("*TO EXIT TYPE 'q'                                            *\n");
+    printf("*TO EXIT TYPE 'q' || 'exit'                                  *\n");
     printf("**************************************************************\n");
 }
 
@@ -96,7 +96,7 @@ int main()
             }
         }
 
-        /* Check if input is "q", if yes then exit shell */
+        /* Check if input is "q" | "exit", if yes then exit shell */
         if ((strcmp(array[0], "q") == 0) || (strcmp(array[0], "exit") == 0))
         {
             printf("SYSTEM : Shell is exit\n");
