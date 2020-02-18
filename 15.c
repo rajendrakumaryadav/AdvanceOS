@@ -12,6 +12,10 @@
 void printInfo(struct stat *, const char *);
 
 int main(int argc, const char **argv) {
+  if (argc < 2) {
+    printf("%s <filename>\n", argv[0]);
+    exit(EXIT_FAILURE);
+  }
   struct stat filestat;
   stat(argv[1], &filestat);
   printInfo(&filestat, argv[1]);
