@@ -25,12 +25,14 @@ int main() {
 
   if (returnstatus1 == -1) {
     printf("Unable to create pipe 1 \n");
+    perror("Error ");
     return 1;
   }
   returnstatus2 = pipe(pipefds2);
 
   if (returnstatus2 == -1) {
     printf("Unable to create pipe 2 \n");
+    perror("Error ");
     return 1;
   }
   pid = fork();
