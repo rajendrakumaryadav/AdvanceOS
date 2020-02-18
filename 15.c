@@ -11,16 +11,14 @@
 #include <unistd.h>
 void printInfo(struct stat *, const char *);
 
-int main(int argc, const char **argv)
-{
+int main(int argc, const char **argv) {
   struct stat filestat;
   stat(argv[1], &filestat);
   printInfo(&filestat, argv[1]);
   return EXIT_SUCCESS;
 }
 
-void printInfo(struct stat *filestat, const char *fileName)
-{
+void printInfo(struct stat *filestat, const char *fileName) {
   struct passwd *pwd;
   struct group *grp;
   char f_created_time[50];
@@ -43,7 +41,7 @@ void printInfo(struct stat *filestat, const char *fileName)
   printf((filestat->st_mode & S_IXOTH) ? "x" : "-");
   printf(" ");
 
-  printf("%2lu %14.32s %14.32s % ld %12.14s %s\n",
-         filestat->st_nlink, pwd->pw_name,
-         grp->gr_name, filestat->st_size, f_created_time, fileName);
+  printf("%2lu %14.32s %14.32s % ld %12.14s %s\n", filestat->st_nlink,
+         pwd->pw_name, grp->gr_name, filestat->st_size, f_created_time,
+         fileName);
 }

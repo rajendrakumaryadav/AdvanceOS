@@ -34,13 +34,8 @@ int main(int argc, char **argv) {
         (strncmp(dirent->d_name, "..", 2) == 0)) {
       continue;
     }
-
-    // if ((file = fopen(dirent->d_name, "r")) || dirent != NULL) {
     lstat(dirent->d_name, &filestat);
     printInfo(&filestat, dirent->d_name);
-    // } else {
-    //   perror("Error ");
-    // }
   }
   return EXIT_SUCCESS;
 }
