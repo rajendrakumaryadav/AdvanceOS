@@ -60,7 +60,7 @@ int main() {
   while (1) {
     displayPrompt();                   // Display a user prompt
     getline(&input, &capline, stdin);  // Read the user input
-                                       /* Check if input is empty */
+
     if (strcmp(input, "\n") == 0) {
       perror("Please type in a command ");
       continue;
