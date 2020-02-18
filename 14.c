@@ -11,12 +11,27 @@
 #include <unistd.h>
 
 void printInfo(struct stat *filestat, const char *fileName);
+
+#include <dirent.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <pwd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <time.h>
+#include <unistd.h>
+
 int main(int argc, char **argv) {
   FILE *file;
   DIR *dir;
   struct dirent *dirent;
   struct stat filestat;
-
+  if (fopen("output.txt", "r") == NULL) {
+    unlink("output.txt");
+  }
   if (argc < 2) {
     dir = opendir(".");
     if (dir == NULL) {
@@ -34,12 +49,20 @@ int main(int argc, char **argv) {
         (strncmp(dirent->d_name, "..", 2) == 0)) {
       continue;
     }
-    lstat(dirent->d_name, &filestat);
-    printInfo(&filestat, dirent->d_name);
+
+    if ((file = fopen(dirent->d_name, "r")) || dirent != NULL) {
+      lstat(dirent->d_name, &filestat);
+      if (freopen("output.txt", "a", stdout) == NULL) {
+        perror("freopen() failed");
+        exit(-1);
+      }
+      printInfo(&filestat, dirent->d_name);
+    } else {
+      perror("Error ");
+    }
   }
   return EXIT_SUCCESS;
 }
-
 void printInfo(struct stat *filestat, const char *fileName) {
   struct passwd *pwd;
   struct group *grp;
