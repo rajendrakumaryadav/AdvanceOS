@@ -1,6 +1,6 @@
 CC=gcc
 NAME=16
-FILES=${NAME}.c functions.c
+FILES=${NAME}.c
 FLAGS=--std=c11 -Wall -g
 OUTPUT=./bin/${NAME}
 

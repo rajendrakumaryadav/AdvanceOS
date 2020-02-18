@@ -21,6 +21,7 @@ void startDisplay()
     printf("*WELCOME TO THE COMMAND LINE INTERPETER                      *\n");
     printf("*TO RUN A COMMAND SIMPLY TYPE YOUR COMMAND AND PRESS 'ENTER' *\n");
     printf("*EXAMPLE: ls -a, <any linux cmd>                             *\n");
+    printf("*Additional: count c/w/l <filename>                          *\n");
     printf("*TO EXIT TYPE 'q'                                            *\n");
     printf("**************************************************************\n");
 }
@@ -28,7 +29,7 @@ void startDisplay()
 /* Print out "MY_SHELL" */
 void displayPrompt()
 {
-    printf("> ");
+    printf("NewShell$ ");
 }
 
 /* Divide input line into tokens */
@@ -78,9 +79,25 @@ int main()
         }
 
         makeTokens(input); // Divide line into tokens
+        if (strcmp(array[0], "count") == 0)
+        {
+            array[0] = "wc";
+            if (strcmp(array[1], "c") == 0)
+            {
+                array[1] = "-c";
+            }
+            else if (strcmp(array[1], "l") == 0)
+            {
+                array[1] = "-l";
+            }
+            else if (strcmp(array[1], "w") == 0)
+            {
+                array[1] = "-w";
+            }
+        }
 
         /* Check if input is "q", if yes then exit shell */
-        if (strcmp(array[0], "q") == 0)
+        if ((strcmp(array[0], "q") == 0) || (strcmp(array[0], "exit") == 0))
         {
             printf("SYSTEM : Shell is exit\n");
             return 0;
