@@ -18,6 +18,7 @@ int main(int argc, char **argv) {
 
   printf("Enter the Month Number [1-12] : ");
   scanf("%d", &month);
+
   month = month - 1;
 
   // READ THE CURRENT DIR ["."] IS CURRENT!
