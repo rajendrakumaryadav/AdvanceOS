@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
+
 void printInfo(struct stat *, const char *);
 
 int main(int argc, const char **argv) {
@@ -17,8 +18,19 @@ int main(int argc, const char **argv) {
     exit(EXIT_FAILURE);
   }
   struct stat filestat;
+  DIR *dirp = NULL;
+  struct dirent *direntp;
   stat(argv[1], &filestat);
-  printInfo(&filestat, argv[1]);
+
+  if (S_ISDIR((&filestat)->st_mode) || S_ISLNK((&filestat)->st_mode)) {
+    dirp = opendir(argv[1]);
+    while ((direntp = readdir(dirp))) {
+      printInfo(&filestat, direntp->d_name);
+    }
+  } else {
+    printInfo(&filestat, argv[1]);
+  }
+  
   return EXIT_SUCCESS;
 }
 
@@ -26,7 +38,6 @@ void printInfo(struct stat *filestat, const char *fileName) {
   struct passwd *pwd;
   struct group *grp;
   char f_created_time[50];
-
   grp = getgrgid(filestat->st_gid);
   pwd = getpwuid(filestat->st_uid);
   struct tm c_time;
