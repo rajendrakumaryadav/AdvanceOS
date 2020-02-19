@@ -14,23 +14,20 @@
 
 int main() {
   int pipefds1[2], pipefds2[2];
-  int returnstatus1, returnstatus2;
   int pid;
 
   char pipe1writemessage[20] = "Hi";
   char pipe2writemessage[20] = "Hello";
 
   char readmessage[20];
-  returnstatus1 = pipe(pipefds1);
 
-  if (returnstatus1 == -1) {
+  if ((pipe(pipefds1)) == -1) {
     printf("Unable to create pipe 1 \n");
     perror("Error ");
     return 1;
   }
-  returnstatus2 = pipe(pipefds2);
 
-  if (returnstatus2 == -1) {
+  if ((pipe(pipefds2)) == -1) {
     printf("Unable to create pipe 2 \n");
     perror("Error ");
     return 1;

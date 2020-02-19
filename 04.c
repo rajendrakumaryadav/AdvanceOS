@@ -5,9 +5,9 @@
 
 int main(int argc, char **argv) {
   struct stat file_stat;
-  process writing in
+  // process writing in
 
-      for (int i = 1; i < argc; i++) {
+  for (int i = 1; i < argc; i++) {
     lstat(argv[i], &file_stat);
     // use ls -li to display long format with inode
     // 5248664 -rwxr-xr-x 1 username 20K Feb 14 00:19 04
