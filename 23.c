@@ -4,27 +4,14 @@
 #include <unistd.h>
 
 int main(int argc, const char *argv[]) {
-  int out = open("cout.log", O_RDWR | O_CREAT | O_APPEND, 0600);
-  if (-1 == out) {
-    perror("opening cout.log");
-    return -1;
+  if (fopen("/tmp/outfile", "r") == NULL) {
+    unlink("/tmp/outfile");
   }
-
-  int save_out = dup(fileno(stdout));
-
-  if (-1 == dup2(out, fileno(stdout))) {
-    perror("cannot redirect stdout");
-    return -1;
+  if (freopen("/tmp/outfile", "w", stdout) == NULL) {
+    perror("Error ");
+    exit(-1);
   }
+  execvp("ls", (const char *)argv);
 
-  puts("doing an ls or something now");
-
-  fflush(stdout);
-  close(out);
-
-  dup2(save_out, fileno(stdout));
-  close(save_out);
-  puts("back to normal output");
-
-  return 0;
+  return EXIT_SUCCESS;
 }
