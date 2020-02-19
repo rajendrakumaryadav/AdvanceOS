@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 #define MAX_SIZE 255
+
 int main(int argc, char **argv) {
   int fd[2];  // fd[0] - reading end of pipe | fd[1] - writing end of pipe
   char buf[MAX_SIZE];
