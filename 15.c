@@ -22,9 +22,10 @@ int main(int argc, const char **argv) {
   struct dirent *direntp;
   stat(argv[1], &filestat);
 
-  if (S_ISDIR((&filestat)->st_mode) || S_ISLNK((&filestat)->st_mode)) {
+  if (S_ISDIR((&filestat)->st_mode)) {
+    // chdir(argv[1]);
     dirp = opendir(argv[1]);
-    while ((direntp = readdir(dirp))) {
+    while ((direntp = readdir(dirp)) != NULL) {
       displayList(&filestat, direntp->d_name);
     }
   } else {
