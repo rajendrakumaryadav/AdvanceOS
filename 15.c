@@ -10,7 +10,7 @@
 #include <time.h>
 #include <unistd.h>
 
-void printInfo(struct stat *, const char *);
+void displayList(struct stat *, const char *);
 
 int main(int argc, const char **argv) {
   if (argc < 2) {
@@ -25,16 +25,15 @@ int main(int argc, const char **argv) {
   if (S_ISDIR((&filestat)->st_mode) || S_ISLNK((&filestat)->st_mode)) {
     dirp = opendir(argv[1]);
     while ((direntp = readdir(dirp))) {
-      printInfo(&filestat, direntp->d_name);
+      displayList(&filestat, direntp->d_name);
     }
   } else {
-    printInfo(&filestat, argv[1]);
+    displayList(&filestat, argv[1]);
   }
-  
   return EXIT_SUCCESS;
 }
 
-void printInfo(struct stat *filestat, const char *fileName) {
+void displayList(struct stat *filestat, const char *fileName) {
   struct passwd *pwd;
   struct group *grp;
   char f_created_time[50];
