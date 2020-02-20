@@ -1,6 +1,6 @@
 CC=gcc
 CXX=g++
-NAME=23
+NAME=11
 FILES=${NAME}.c
 FLAGS=--std=c11 -Wall -g
 OUTPUT=./bin/${NAME}

@@ -4,13 +4,13 @@
 void done() { printf("Exiting Successfully\n"); }
 
 int main() {
-  int value;
-  value = atexit(done);
+    int value;
+    value = atexit(done);
 
-  if (value != 0) {
-    printf("atexit () function registration failed");
-    exit(1);
-  }
-  printf("Registration successful.\n");
-  return 0;
+    if (value != 0) {
+        printf("atexit () function registration failed");
+        exit(1);
+    }
+    printf("Registration successful.\n");
+    return 0;
 }
