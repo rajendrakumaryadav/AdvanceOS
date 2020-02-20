@@ -31,9 +31,10 @@ int main(int argc, char **argv) {
       close(fd[1]);  // Close write end of pipe
       if (read(fd[0], buf, MAX_SIZE) == -1) {
         perror("Reading from pipe error  ");
-        break;
+        exit(1);
       }
       printf("Data from the pipe : %s\n", buf);
+      break;
   }
   exit(EXIT_SUCCESS);
 }
