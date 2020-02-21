@@ -15,7 +15,7 @@ char *token;
 char *array[512];
 
 /* Display some info to the user at the start */
-void startDisplay( )
+void startDisplay()
 {
     printf("**************************************************************\n");
     printf("*WELCOME TO THE COMMAND LINE INTERPETER                      *\n");
@@ -27,7 +27,7 @@ void startDisplay( )
 }
 
 /* Print out "MY_SHELL" */
-void displayPrompt( )
+void displayPrompt()
 {
     printf("NewShell$ ");
 }
@@ -45,13 +45,14 @@ void makeTokens(char *input)
 }
 
 /* Execute a command */
-void execute( )
+void execute()
 {
-    int pid = fork( );  // Create a new process
-    if (pid != 0) {     // If not successfully completed
+    int pid = fork();  // Create a new process
+    if (pid != 0) {    // If not successfully completed
         int s;
         waitpid(-1, &s, 0);  // Wait for process termination
-    } else {
+    }
+    else {
         if (execvp(array[0], array) == -1) {  // If returned -1 => something went wrong! If not then
                                               // command successfully completed */
             perror("Wrong command");          // Display error message
@@ -60,11 +61,11 @@ void execute( )
     }
 }
 
-int main( )
+int main()
 {
-    startDisplay( );
+    startDisplay();
     while (1) {
-        displayPrompt( );                  // Display a user prompt
+        displayPrompt();                   // Display a user prompt
         getline(&input, &capline, stdin);  // Read the user input
 
         if (strcmp(input, "\n") == 0) {
@@ -77,9 +78,11 @@ int main( )
             array[0] = "wc";
             if (strcmp(array[1], "c") == 0) {
                 array[1] = "-c";
-            } else if (strcmp(array[1], "l") == 0) {
+            }
+            else if (strcmp(array[1], "l") == 0) {
                 array[1] = "-l";
-            } else if (strcmp(array[1], "w") == 0) {
+            }
+            else if (strcmp(array[1], "w") == 0) {
                 array[1] = "-w";
             }
         }
@@ -89,6 +92,6 @@ int main( )
             printf("SYSTEM : Shell is exit\n");
             return 0;
         }
-        execute( );  // Call execvp()
+        execute();  // Call execvp()
     }
 }
