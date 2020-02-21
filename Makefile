@@ -8,5 +8,7 @@ OUTPUT=./bin/${NAME}
 main: ${FILES}
 	${CC} ${FILES} ${FLAGS} -o ${OUTPUT}
 
-run: main ${FILES}
+prog: ${FILES}
 	${OUTPUT}
+remove:	${OUTPUT}
+		-rm -rf ${OUTPUT}

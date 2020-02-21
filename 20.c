@@ -5,11 +5,12 @@
  **************************************************************** */
 #include <errno.h>
 #include <fcntl.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <wait.h>
+#include <sys/wait.h>
 int main(int argc, char *Argv[])
 {
     if (argc < 3) {
