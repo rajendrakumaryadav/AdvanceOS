@@ -13,6 +13,7 @@
 #include <sys/wait.h>
 int main(int argc, char *Argv[])
 {
+
     if (argc < 3) {
         printf("Usage : %s <filename1> <filename2> ...\n", Argv[0]);
         exit(-1);
