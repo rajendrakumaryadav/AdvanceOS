@@ -1,8 +1,8 @@
 CC=gcc
 CXX=g++
-NAME=22
+NAME=demo_22
 FILES=${NAME}.c
-FLAGS=--std=c11 -Wall -extras -pedantic -g
+FLAGS=--std=c11 -Wall -w -Wextra -pedantic -g
 OUTPUT=./bin/${NAME}
 
 main: ${FILES}

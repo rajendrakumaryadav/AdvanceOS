@@ -5,14 +5,18 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-void handle()
+void sig_handle(int sig)
 {
-    exit(0);
+    if (sig == SIGQUIT)
+        ;
+    if (sig == SIGINT)
+        ;
 }
 int main(int argc, char *argv[])
 {
     int pfd[2]; /* Pipe file descriptors */
-    // signal(SIGINT, handle);
+    signal(SIGQUIT, sig_handle);
+    signal(SIGINT, sig_handle);
 
     if (pipe(pfd) == -1) /* Create pipe */
         perror("Error [Pipe cannot create] ");
