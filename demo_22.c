@@ -6,7 +6,6 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 void catch_signal(int sigstatus)
 {
@@ -18,7 +17,7 @@ void catch_signal(int sigstatus)
 }
 int main()
 {
-    signal signal(SIGINT, catch_signal);
+    signal(SIGINT, catch_signal);
     signal(SIGQUIT, catch_signal);
 
     for (;;)
