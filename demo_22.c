@@ -18,11 +18,10 @@ void catch_signal(int sigstatus)
 int main()
 {
 
-    for (;;) {
-	
-    signal(SIGINT, catch_signal);
-    signal(SIGQUIT, catch_signal);
-        }
+    for (;;) {	
+    	signal(SIGINT, catch_signal);
+	signal(SIGQUIT, catch_signal);
+    }
 
     exit(EXIT_SUCCESS);
 }
