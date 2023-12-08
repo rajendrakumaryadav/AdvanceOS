@@ -34,13 +34,13 @@ int main()
 
 int create_sparse_file(char *path, uint64_t size)
 {
-    int fd = 0;
+    int fd = 0; 
     fd     = open(path, O_RDWR | O_CREAT, 0666);
     if (fd == -1) {
         return -1;
     }
     if (lseek(fd, size - 1, SEEK_CUR) == -1) {
-        return -1;
+        return -1; 
     }
     write(fd, "\0", 1);
     close(fd);
