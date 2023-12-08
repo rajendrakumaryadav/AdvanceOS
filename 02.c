@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define MAX_SIZE 255
+#define MAX_SIZE 0xff
 
 int main(int argc, char **argv)
 {
