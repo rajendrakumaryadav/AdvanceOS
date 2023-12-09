@@ -5,6 +5,8 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+// 
+
 void sighup_handler(int sig) {
   printf("Child process received SIGHUP signal\n");
 }
@@ -17,7 +19,7 @@ void sigquit_handler(int sig) {
   printf("My Papa has Killed me!!!\n");
   exit(0);
 }
-
+ 
 int main() {
   int pid = fork();
 
@@ -32,8 +34,7 @@ int main() {
       sleep(1);
     }
   } else if (pid > 0) { // Parent process
-    int i;
-    for (i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {
       sleep(3);
       // Send SIGHUP or SIGINT randomly
       if (rand() % 2 == 0) {

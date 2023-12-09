@@ -7,7 +7,7 @@ int main() {
   char message1[] = "Hello World";
   char message2[] = "Hello SPPU";
   char message3[] = "Linux is Funny";
-  char read_message[20]; // Buffer to read messages
+  char read_message[50]; // Buffer to read messages
 
   // Create an unnamed pipe
   return_status = pipe(pipefds);
@@ -27,7 +27,6 @@ int main() {
 
     write(pipefds[1], message2, sizeof(message2));
     printf("Message 2: %s\n", message2);
-
     write(pipefds[1], message3, sizeof(message3));
     printf("Message 3: %s\n", message3);
   } else if (child_pid > 0) { // Parent process
@@ -38,12 +37,11 @@ int main() {
     read(pipefds[0], read_message, sizeof(read_message));
     printf("Parent Process is Reading from pipe: %s\n", read_message);
 
-    read(pipefds[0], read_message, sizeof(read_message));
+    ssize_t data_len = read(pipefds[0], read_message, sizeof(read_message));
     printf("Parent Process is Reading from pipe: %s\n", read_message);
   } else { // Fork error
     printf("Error forking child process\n");
     return 1;
   }
-
   return 0;
 }

@@ -72,6 +72,5 @@ int main()
     // Wait for the child process to finish
     waitpid(pid, NULL, 0);
   }
-
   return 0;
 }
